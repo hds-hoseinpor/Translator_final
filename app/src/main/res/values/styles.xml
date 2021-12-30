@@ -1,0 +1,58 @@
+<resources>
+
+
+    <!--style for ripple library-->
+
+
+    <style name="Sub">
+        <item name="android:background">@drawable/btn_outline_shape</item>
+        <item name="android:textColor">@color/TextColor</item>
+        <item name="android:fontFamily">@font/iranyekan_extrabold_fanum</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:height">45dp</item>
+        <item name="android:paddingRight">15dp</item>
+        <item name="android:paddingLeft">15dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:maxLines">1</item>
+
+    </style>
+
+    <style name="Main">
+        <item name="android:background">@drawable/btn_inline_shape</item>
+        <item name="android:textColor">@color/TextColor</item>
+        <item name="android:fontFamily">@font/iranyekan_bold_fanum</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:height">50dp</item>
+        <item name="android:paddingRight">15dp</item>
+        <item name="android:paddingLeft">15dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:maxLines">1</item>
+
+    </style>
+
+    <style name="TextViewTitleBig">
+        <item name="android:textColor">@color/TextColor</item>
+        <item name="android:fontFamily">@font/iranyekan_regular_fanum</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+
+    </style>
+
+    <style name="TextViewTitleNormal">
+        <item name="android:textColor">@color/TextColor</item>
+        <item name="android:fontFamily">@font/iranyekan_regular_fanum</item>
+        <item name="android:textSize">16sp</item>
+
+    </style>
+
+    <style name="TextViewTitleSmall">
+        <item name="android:textColor">@color/TextColor</item>
+        <item name="android:fontFamily">@font/iranyekan_regular_fanum</item>
+        <item name="android:textSize">14sp</item>
+
+    </style>
+
+
+</resources>

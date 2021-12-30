@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimaryVariant">#FFBB86FC</color>
+    <color name="colorPrimary">#FF6200EE</color>
+    <color name="colorSecondary">#FF03DAC5</color>
+    <color name="colorSecondaryVariant">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+
+    <color name="TextColor">#1A202C</color>
+    <color name="TextColor2">#676767</color>
+    <color name="TextColor3">#8A8A8A</color>
+    <color name="TextColor2Variant">#4D676767</color>
+    <color name="TextColorBlue">#2F8EEE</color>
+    <!--    <color name="TextColorRed">#FF0825</color>-->
+    <color name="TextColorRed">#ff0052</color>
+    <color name="TextColorRedVariant">#0DFF0052</color>
+    <color name="TextColorGreen">#04AC26</color>
+    <color name="TextColorWhite">#FAFAFA</color>
+    <color name="hintTextColor">#C8C8C8</color>
+    <color name="ShadowColor">#1A2014</color>
+    <color name="colorBorder">#C8C8C8</color>
+    <color name="colorBorderSecondary">@color/colorSecondary</color>
+
+
+    <color name="grey_5">#f2f2f2</color>
+    <color name="grey_10">#e6e6e6</color>
+    <color name="grey_20">#cccccc</color>
+    <color name="grey_40">#999999</color>
+    <color name="grey_60">#666666</color>
+    <color name="grey_80">#37474F</color>
+    <color name="grey_90">#263238</color>
+
+</resources>

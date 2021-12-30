@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.darya.translator.DataModel.DMBottomSearchData;
 import com.darya.translator.DataModel.DMTranslateData;
+import com.darya.translator.Tools.ActivityWithAnimation;
 import com.darya.translator.Tools.BottomSheetSearch;
 import com.darya.translator.Tools.GsonModelToGsonAndGsonToModel;
 import com.darya.translator.Tools.Tools;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView img_search;
     private EditText etxt_text;
     private TextView txt_from, txt_to, txt_result, txt_more;
+    private TextView txt_translate;
     private Context context;
     private ApiService apiService;
     private BottomSheetSearch bss_language;
@@ -85,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
         txt_to = findViewById(R.id.txt_to);
         txt_result = findViewById(R.id.txt_result);
         txt_more = findViewById(R.id.txt_more);
+        txt_translate = findViewById(R.id.txt_translate);
         bss_language = findViewById(R.id.bss_language);
         img_change = findViewById(R.id.img_change);
         recycler_view = findViewById(R.id.recycler_view);
@@ -98,8 +101,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (data != null) {
                     Intent intent = new Intent(context, DetailActivity.class);
+                    intent.putExtra("text", etxt_text.getText().toString());
                     intent.putExtra("data", GsonModelToGsonAndGsonToModel.ModelToJson(data));
-                    startActivity(intent);
+                    ActivityWithAnimation.set(intent, context, ll_result, etxt_text,img_search);
+//                    ActivityWithAnimation.set(intent, context, txt_translate);
                 }
             }
         });

@@ -120,17 +120,31 @@
             android:background="@drawable/etxt_rounded_color_on_secondory_outline_afew_radius"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/txt_translate"
-                style="@style/TextViewTitleSmall"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/back_primary"
-                android:gravity="center"
-                android:justificationMode="inter_word"
-                android:paddingRight="30dp"
-                android:text="ترجمه" />
+                android:layout_height="wrap_content">
 
+                <TextView
+                    android:id="@+id/txt_translate"
+                    style="@style/TextViewTitleSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/back_primary"
+                    android:gravity="center"
+                    android:justificationMode="inter_word"
+                    android:paddingRight="30dp"
+                    android:text="ترجمه" />
+
+                <ProgressBar
+                    android:id="@+id/pb1"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:indeterminateTint="@color/colorPrimaryVariant"
+                    android:visibility="visible" />
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/txt_result"

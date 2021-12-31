@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.darya.translator.Adapter.AdapterRecyclerViewItem;
 import com.darya.translator.DataModel.DMTranslateData;
-import com.darya.translator.Tools.ActivityWithAnimation;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -33,8 +32,6 @@ public class DetailActivity extends AppCompatActivity {
         initView();
         initListener();
         getDataIntent();
-        ActivityWithAnimation.init(root, txt_text,img_speach);
-//        ActivityWithAnimation.init( rl_top);
     }
 
 

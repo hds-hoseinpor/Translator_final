@@ -10,6 +10,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,7 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.darya.translator.DataModel.DMBottomSearchData;
 import com.darya.translator.DataModel.DMTranslateData;
-import com.darya.translator.Tools.ActivityWithAnimation;
 import com.darya.translator.Tools.BottomSheetSearch;
 import com.darya.translator.Tools.GsonModelToGsonAndGsonToModel;
 import com.darya.translator.Tools.Tools;
@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private Target target;
     private MediaPlayer mediaPlayer;
     private View view;
+    private ProgressBar pb1;
     private DMTranslateData data;
 
     private enum Target {
@@ -68,11 +69,6 @@ public class MainActivity extends AppCompatActivity {
         languages.add(new DMBottomSearchData("fr", "فرانسوی"));
         languages.add(new DMBottomSearchData("de", "آلمانی"));
         languages.add(new DMBottomSearchData("es", "اسپانیایی"));
-        languages.add(new DMBottomSearchData("it", "ایتالیایی"));
-        languages.add(new DMBottomSearchData("ps", "پشتو"));
-        languages.add(new DMBottomSearchData("pt", "پرتغالی"));
-        languages.add(new DMBottomSearchData("tg", "تاجیکستانی"));
-        languages.add(new DMBottomSearchData("th", "تایلندی"));
         languages.add(new DMBottomSearchData("ru", "روسی"));
         languages.add(new DMBottomSearchData("ar", "عربی"));
 
@@ -91,11 +87,19 @@ public class MainActivity extends AppCompatActivity {
         bss_language = findViewById(R.id.bss_language);
         img_change = findViewById(R.id.img_change);
         recycler_view = findViewById(R.id.recycler_view);
+        pb1 = findViewById(R.id.pb1);
+        pb1.setVisibility(View.GONE);
         ll_result = findViewById(R.id.ll_result);
         ll_result.setVisibility(View.GONE);
     }
 
     private void initListener() {
+        txt_result.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Tools.copyToClipboard(context, txt_result.getText().toString());
+            }
+        });
         txt_more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,8 +107,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(context, DetailActivity.class);
                     intent.putExtra("text", etxt_text.getText().toString());
                     intent.putExtra("data", GsonModelToGsonAndGsonToModel.ModelToJson(data));
-                    ActivityWithAnimation.set(intent, context, ll_result, etxt_text,img_search);
-//                    ActivityWithAnimation.set(intent, context, txt_translate);
+                    startActivity(intent);
                 }
             }
         });
@@ -195,9 +198,11 @@ public class MainActivity extends AppCompatActivity {
         }
         Tools.hideKyboardWhenClicked(view, context);
         checkApiService();
+        pb1.setVisibility(View.VISIBLE);
         apiService.translate(etxt_text.getText().toString(), from_id, to_id, new ApiService.OnReceivedData() {
             @Override
             public void onReceived(DMTranslateData item) {
+                pb1.setVisibility(View.GONE);
                 data = item;
                 ll_result.setVisibility(View.VISIBLE);
                 txt_more.setVisibility(View.VISIBLE);
@@ -206,6 +211,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onError(String message) {
+                pb1.setVisibility(View.GONE);
 //                Tools.showCustomToast(message, context);
             }
         });

@@ -1,6 +1,8 @@
 package com.darya.translator.Tools;
 
 import android.app.Activity;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +19,13 @@ public class Tools {
 // Then just use the following:
         InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(mainLayout.getWindowToken(), 0);
+    }
+
+    public static void copyToClipboard(Context context, String data) {
+        ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("clipboard", data);
+        clipboard.setPrimaryClip(clip);
+        showCustomToast( "کپی شد",context);
     }
 
     public static void showCustomToast(String message, Context context) {

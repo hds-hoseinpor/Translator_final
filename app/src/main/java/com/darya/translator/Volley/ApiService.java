@@ -12,6 +12,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.Volley;
 import com.darya.translator.DataModel.DMTranslateData;
+import com.darya.translator.Tools.Tools;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
@@ -54,6 +55,13 @@ public class ApiService {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                try {
+                    if (error.networkResponse.statusCode == 429) {
+                        Tools.showCustomToast("شما به محدودیت روزانه درخواست ها رسیده اید", context);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 Log.i(TAG, "onErrorResponse:" + title_log + " : " + error.toString());
                 try {
                     receiver.onError(error.networkResponse.statusCode + " : " + WHEN_ERROR_IN_SERVER);

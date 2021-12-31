@@ -4,12 +4,14 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.darya.translator.DataModel.DMTranslateData;
 import com.darya.translator.R;
+import com.darya.translator.Tools.Tools;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,12 +31,14 @@ public class AdapterRecyclerViewItem extends RecyclerView.Adapter<RecyclerView.V
 
     public class N1ViewHolder extends RecyclerView.ViewHolder {
         private TextView txt_translate, txt_creator, txt_source_target;
+        private ImageView img_copy;
 
         public N1ViewHolder(View v) {
             super(v);
             txt_translate = v.findViewById(R.id.txt_translate);
             txt_creator = v.findViewById(R.id.txt_creator);
             txt_source_target = v.findViewById(R.id.txt_source_target);
+            img_copy = v.findViewById(R.id.img_copy);
         }
     }
 
@@ -58,6 +62,12 @@ public class AdapterRecyclerViewItem extends RecyclerView.Adapter<RecyclerView.V
             holder.txt_translate.setText(item.getTranslation());
             holder.txt_creator.setText(item.getCreatedby());
             holder.txt_source_target.setText(item.getSource() + " >> " + item.getTarget());
+            holder.img_copy.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Tools.copyToClipboard(context, item.getTranslation());
+                }
+            });
         }
     }
 

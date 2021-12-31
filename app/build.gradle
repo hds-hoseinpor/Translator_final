@@ -14,7 +14,9 @@ android {
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
+    lintOptions {
+        checkReleaseBuilds false
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -41,6 +43,7 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.2.1' //recycler view
     implementation 'com.google.code.gson:gson:2.8.8'
     implementation "androidx.core:core-ktx:+"
+
     /// Convert Json To Data Model
 
 }
